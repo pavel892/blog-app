@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <title><%= post.title %> | Blog App</title>
+  </head>
+
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="hero-art">
+          <img src="/images/controller.png" alt="" class="hero-controller" />
+
+          <img src="/images/moon-and-stars.png" alt="" class="hero-moon" />
+
+          <img src="/images/sleeping-cat.png" alt="" class="hero-cat" />
+        </div>
+
+        <div class="brand">
+          <h1>Blog App</h1>
+          <p>Your little corner of the internet</p>
+        </div>
+
+        <nav class="main-nav">
+          <a href="/" class="nav-link"> <span>⌂</span> Home </a>
+
+          <a href="/posts/new" class="nav-link"> <span>✎</span> Create Post </a>
+        </nav>
+      </header>
+
+      <main class="show-main">
+        <div class="section-heading">
+          <span class="heading-star">★</span>
+          <h2>Post details</h2>
+          <span class="heading-line"></span>
+        </div>
+
+        <article class="show-card">
+          <div class="show-card-top">
+            <span class="level-label">PLAYER JOURNAL</span>
+            <span class="post-status">● PUBLISHED</span>
+          </div>
+
+          <div class="show-decoration">
+            <img src="/images/handheld-console.png" alt="" />
+          </div>
+
+          <h3 class="show-title"><%= post.title %></h3>
+
+          <div class="show-divider"></div>
+
+          <div class="show-content">
+            <p><%= post.content %></p>
+          </div>
+
+          <div class="show-footer">
+            <span>★ END OF POST ★</span>
+          </div>
+        </article>
+
+        <div class="show-actions">
+          <a href="/" class="cancel-button"> ← Back to posts </a>
+
+          <a href="/posts/<%= post.id %>/edit" class="submit-button">
+            Edit Post
+          </a>
+
+          <form action="/posts/<%= post.id %>?_method=DELETE" method="POST">
+            <button type="submit" class="delete-button">Delete Post</button>
+          </form>
+
+          <a href="/posts/new" class="submit-button"> ✎ Create another </a>
+        </div>
+      </main>
+
+      <footer class="site-footer">
+        <span>PRESS START</span>
+        <span class="footer-hearts">♥ ♥ ♥</span>
+      </footer>
+    </div>
+  </body>
+</html>

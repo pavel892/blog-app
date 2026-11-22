@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css">
+    <title>Blog App</title>
+  </head>
+  <body>
+    <header>
+  <img
+    src="/images/controller.png"
+    alt="Game controller"
+    class="header-controller"
+  >
+
+  <h1>Blog App</h1>
+
+  <img
+    src="/images/sleeping-cat.png"
+    alt="Sleeping cat"
+    class="header-cat"
+  >
+
+  <nav>
+    <a href="/">Home</a>
+    <a href="/posts/new">Create Post</a>
+  </nav>
+</header>
+
+    <main>
+      <h2>Latest posts</h2>
+<section class="latest-posts">
+  <div class="section-heading">
+    <span class="level-label">LEVEL: 01</span>
+    <h2>Latest Posts</h2>
+  </div>
+
+  <% if (posts.length === 0) { %>
+    <div class="empty-posts">
+      <img src="/images/sleeping-cat.png" alt="" />
+      <h3>No posts yet!</h3>
+      <p>It's quiet here. Create the first post!</p>
+      <a href="/posts/new" class="create-post-link">+ Create Post</a>
+    </div>
+  <% } else { %>
+    <div class="posts-grid">
+      <% posts.forEach((post, index) => { %>
+        <article class="post-card">
+          <div class="post-card-top">
+            <span class="post-number">
+              POST #<%= String(index + 1).padStart(2, "0") %>
+            </span>
+            <span class="post-status">NEW</span>
+          </div>
+
+          <h3><%= post.title %></h3>
+
+          <p class="post-excerpt">
+            <%= post.content.length > 120
+              ? post.content.slice(0, 120) + "..."
+              : post.content %>
+          </p>
+
+          <div class="post-card-footer">
+            <span class="post-decoration">✦ ✧ ✦</span>
+            <a href="/posts/<%= post.id %>" class="read-post-button">
+              Read Post →
+            </a>
+          </div>
+        </article>
+      <% }) %>
+    </div>
+  <% } %>
+</section>
+    </main>
+  </body>
+</html>
